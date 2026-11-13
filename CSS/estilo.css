@@ -97,3 +97,47 @@ body{
 .enlace:hover {
     text-decoration: underline;
 }
+
+/*colores de cuadros de texto de los formularios*/
+
+/* Campo correctamente diligenciado */
+.grupo-campo input.valido {
+    border: 2px solid #27AE60;
+    outline: none;
+}
+
+/* Campo con errores */
+.grupo-campo input.invalido {
+    border: 2px solid #E74C3C;
+    outline: none;
+}
+
+/* Mensajes debajo de los campos */
+.mensaje-error {
+    display: block;
+    font-size: 12px;
+    margin-top: 4px;
+    min-height: 16px;
+}
+
+
+/*Campos del formulario de registro*/
+/* Campo correcto */
+.grupo-campo input.valido {
+    border: 2px solid #27AE60;
+    outline: none;
+}
+
+/* Campo incorrecto */
+.grupo-campo input.invalido {
+    border: 2px solid #E74C3C;
+    outline: none;
+}
+
+/* Mensajes de validación */
+.mensaje-error {
+    display: block;
+    font-size: 12px;
+    margin-top: 4px;
+    min-height: 16px;
+}
