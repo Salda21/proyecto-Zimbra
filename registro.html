@@ -39,25 +39,29 @@
                             <label>Nombre completo</label>
                             <input type="text" required
                                 placeholder="Nombre completo">
+                            <small class="mensaje-error" id="errorNombre"></small>
                         </div>
 
                         <div class="field">
                             <label>Correo electrónico</label>
                             <input type="email" required
                                 placeholder="correo@empresa.com">
-                        </div>
+                            <small class="mensaje-error" id="errorEmail"></small>
+                            </div>
 
                         <div class="field">
                             <label>Contraseña</label>
                             <input id="password" type="password"
                                 minlength="8" required
                                 placeholder="Mínimo 8 caracteres">
-                        </div>
+                            <small class="mensaje-error" id="errorPassword"></small>
+                            </div>
 
                         <div class="field">
                             <label>Confirmar contraseña</label>
                             <input id="confirmPassword" type="password"
                                 required placeholder="Repite tu contraseña">
+                            <small class="mensaje-error" id="errorConfirmar"></small>
                         </div>
 
                         <button class="btn btn-orange" type="submit">
