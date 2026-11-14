@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear cuenta | ZimbraConnect</title>
+
+    <link rel="stylesheet" href="assets/css/estilos.css">
+    <link rel="stylesheet" href="assets/css/autenticacion.css">
+    <link rel="stylesheet" href="assets/css/componentes.css">
+</head>
+<body>
+
+    <main class="auth-page">
+
+        <aside class="auth-brand">
+            <div class="plane">➤</div>
+            <h2>ZimbraConnect</h2>
+            <p>Tu espacio de comunicación y productividad</p>
+        </aside>
+
+        <section class="auth-panel">
+            <div class="auth-card card">
+
+                <div id="register">
+
+                    <div class="eyebrow">Únete a nuestra comunidad</div>
+
+                    <h1>Crear cuenta</h1>
+
+                    <p class="muted">
+                        Completa tus datos para comenzar.
+                    </p>
+
+                    <form id="registerForm">
+
+                        <div class="field">
+                            <label>Nombre completo</label>
+                            <input type="text" required
+                                placeholder="Nombre completo">
+                        </div>
+
+                        <div class="field">
+                            <label>Correo electrónico</label>
+                            <input type="email" required
+                                placeholder="correo@empresa.com">
+                        </div>
+
+                        <div class="field">
+                            <label>Contraseña</label>
+                            <input id="password" type="password"
+                                minlength="8" required
+                                placeholder="Mínimo 8 caracteres">
+                        </div>
+
+                        <div class="field">
+                            <label>Confirmar contraseña</label>
+                            <input id="confirmPassword" type="password"
+                                required placeholder="Repite tu contraseña">
+                        </div>
+
+                        <button class="btn btn-orange" type="submit">
+                            Registrarse
+                        </button>
+
+                    </form>
+
+                    <p class="muted" style="text-align:center;margin:18px 0 0">
+                        ¿Ya tienes cuenta?
+                        <a href="login.html"
+                           style="color:#0865dc;font-weight:800">
+                            Inicia sesión
+                        </a>
+                    </p>
+
+                </div>
+
+                <a href="index.html" class="muted"
+                   style="display:block;text-align:center;margin-top:18px">
+                    ← Volver al inicio
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script src="assets/js/notificaciones.js"></script>
+    <script src="assets/js/autenticacion.js"></script>
+
+</body>
+</html>

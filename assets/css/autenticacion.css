@@ -1,0 +1,119 @@
+
+/* =================================
+   AUTENTICACIÓN - ZIMBRACONNECT
+================================= */
+
+.auth-page {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: minmax(260px, .8fr) minmax(340px, 1.2fr);
+    padding: 24px;
+    gap: 24px;
+}
+
+/* Panel de marca */
+
+.auth-brand {
+    background: linear-gradient(150deg, #0a2d59, #1268c8);
+    border-radius: 16px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 35px;
+}
+
+.auth-brand .plane {
+    font-size: 65px;
+}
+
+.auth-brand h2 {
+    margin: 15px 0 8px;
+}
+
+/* Panel del formulario */
+
+.auth-panel {
+    display: grid;
+    place-items: center;
+    padding: 20px;
+}
+
+/* Tarjeta */
+
+.auth-card {
+    width: min(100%, 440px);
+    padding: 35px;
+    display: block;
+    position: relative;
+}
+
+.auth-card h1 {
+    font-size: 29px;
+    letter-spacing: -.8px;
+}
+
+.auth-card .btn {
+    width: 100%;
+    margin-top: 4px;
+}
+
+/* Formularios */
+
+.auth-card form {
+    width: 100%;
+}
+
+.auth-card .field {
+    margin-bottom: 18px;
+}
+
+/* Enlaces */
+
+.auth-card a {
+    text-decoration: none;
+}
+
+.auth-card a:hover {
+    text-decoration: underline;
+}
+
+/* Pantallas medianas */
+
+@media (max-width: 900px) {
+    .auth-page {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-brand {
+        min-height: 200px;
+    }
+
+    .auth-brand .plane {
+        font-size: 45px;
+    }
+}
+
+/* Móviles */
+
+@media (max-width: 700px) {
+    .auth-page {
+        padding: 12px;
+        gap: 15px;
+    }
+
+    .auth-brand {
+        min-height: 160px;
+        padding: 20px;
+    }
+
+    .auth-card {
+        padding: 25px 20px;
+    }
+
+    .auth-card h1 {
+        font-size: 25px;
+    }
+}

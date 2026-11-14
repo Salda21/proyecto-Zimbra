@@ -1,0 +1,18 @@
+
+.app-layout{min-height:100vh;display:grid;grid-template-columns:220px minmax(0,1fr);gap:0}
+.sidebar{background:linear-gradient(180deg,#0b2c56,#123f78);color:#e8f2ff;padding:18px 12px;display:flex;flex-direction:column;min-height:100vh;position:sticky;top:0;height:100vh}
+.sidebar .brand{color:#fff;padding:0 8px 24px}.side-label{font-size:10px;color:#a9c9ef;text-transform:uppercase;letter-spacing:.12em;padding:14px 10px 7px}
+.side-link{display:flex;gap:11px;align-items:center;padding:10px;border-radius:8px;color:#d6e7fb;font-size:12px;margin:2px 0}
+.side-link:hover,.side-link.active{background:#1765bd;color:#fff}.side-link span:first-child{width:18px;text-align:center;font-size:16px}
+.sidebar-user{margin-top:auto;border-top:1px solid #ffffff30;padding:15px 7px 4px;display:flex;gap:9px;align-items:center;font-size:11px}
+.app-main{min-width:0;padding:0 24px 30px}
+.topbar{height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.topbar .search{max-width:340px}.top-actions{display:flex;align-items:center;gap:13px}
+.page-content{padding:12px 0 30px}.panel{padding:18px}.panel-title{font-weight:800;margin-bottom:14px}
+.chart-placeholder{height:190px;border-radius:10px;background:repeating-linear-gradient(to bottom,#fff 0,#fff 39px,#eaf1fb 40px);border:1px solid #e5edf8;position:relative;overflow:hidden}
+.chart-placeholder svg{width:100%;height:100%}
+.donut{width:130px;height:130px;border-radius:50%;background:conic-gradient(#0865dc 0 42%,#ff9a25 42% 76%,#1da875 76%);position:relative;margin:auto}
+.donut:after{content:"";position:absolute;inset:30px;border-radius:50%;background:#fff}
+.mobile-menu{display:none}
+@media(max-width:900px){.app-layout{grid-template-columns:68px minmax(0,1fr)}.sidebar{padding:15px 7px}.sidebar .brand{font-size:0;justify-content:center;padding:0 0 20px}.sidebar .brand-mark{font-size:18px}.side-link{justify-content:center;font-size:0}.side-link span:first-child{font-size:17px}.side-label,.sidebar-user div:last-child{display:none}.sidebar-user{justify-content:center}.app-main{padding:0 14px 25px}}
+@media(max-width:560px){.app-layout{grid-template-columns:1fr}.sidebar{position:fixed;z-index:50;left:-240px;width:220px;transition:.25s}.sidebar.open{left:0}.sidebar .brand{font-size:18px;justify-content:flex-start}.side-link{justify-content:flex-start;font-size:12px}.side-link span:first-child{font-size:16px}.side-label,.sidebar-user div:last-child{display:block}.sidebar-user{justify-content:flex-start}.mobile-menu{display:inline-flex}.topbar{height:62px}.app-main{padding:0 12px 25px}}

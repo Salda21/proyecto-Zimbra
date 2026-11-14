@@ -1,0 +1,31 @@
+
+.modal{display:none;position:fixed;inset:0;background:#071c38a8;z-index:100;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.modal-card{width:min(100%,460px);background:#fff;border-radius:14px;padding:25px;box-shadow:0 20px 60px #061c3d45;position:relative}.modal-card .close{position:absolute;right:12px;top:10px}.modal-card h2{padding-right:25px}
+
+
+/* Sistema de notificaciones ZimbraConnect */
+.zc-toast-region{position:fixed;top:22px;right:22px;z-index:9999;display:flex;flex-direction:column;gap:12px;width:min(390px,calc(100vw - 32px));pointer-events:none}
+.zc-toast{--toast-accent:var(--blue);position:relative;display:grid;grid-template-columns:42px minmax(0,1fr) 28px;gap:12px;align-items:start;padding:15px 14px 17px;background:rgba(255,255,255,.97);border:1px solid var(--line);border-left:4px solid var(--toast-accent);border-radius:13px;box-shadow:0 14px 38px rgba(13,45,89,.16);backdrop-filter:blur(12px);pointer-events:auto;overflow:hidden;animation:zc-toast-in .28s ease both}
+.zc-toast--success{--toast-accent:#159765}.zc-toast--error{--toast-accent:#d94b55}.zc-toast--warning{--toast-accent:#e18a22}.zc-toast--info{--toast-accent:#2878d7}
+.zc-toast__icon{width:40px;height:40px;display:grid;place-items:center;border-radius:11px;background:color-mix(in srgb,var(--toast-accent) 11%,white);color:var(--toast-accent);font-size:19px;font-weight:800}
+.zc-toast__title{font-size:13px;font-weight:800;color:var(--ink);margin:1px 0 4px}
+.zc-toast__message{font-size:12px;line-height:1.55;color:var(--muted);overflow-wrap:anywhere}
+.zc-toast__close{border:0;background:transparent;color:#8b9bb1;font-size:19px;line-height:1;padding:2px;cursor:pointer}
+.zc-toast__close:hover{color:var(--ink)}
+.zc-toast__progress{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--toast-accent);transform-origin:left;animation:zc-toast-progress linear forwards;opacity:.65}
+.zc-toast.zc-leaving{animation:zc-toast-out .2s ease forwards}
+@keyframes zc-toast-in{from{opacity:0;transform:translateX(18px) translateY(-5px)}to{opacity:1;transform:translateX(0) translateY(0)}}
+@keyframes zc-toast-out{to{opacity:0;transform:translateX(18px)}}
+@keyframes zc-toast-progress{to{transform:scaleX(0)}}
+.zc-dialog-backdrop{position:fixed;inset:0;z-index:10000;background:rgba(7,28,56,.48);backdrop-filter:blur(4px);display:grid;place-items:center;padding:18px;animation:zc-fade .18s ease}
+.zc-dialog{width:min(100%,420px);background:#fff;border:1px solid var(--line);border-radius:17px;padding:25px;box-shadow:0 24px 70px rgba(5,25,55,.24);animation:zc-dialog-in .22s ease}
+.zc-dialog__symbol{width:46px;height:46px;border-radius:13px;background:#fff3e5;color:#d77a16;display:grid;place-items:center;font-size:22px;margin-bottom:15px}
+.zc-dialog h3{font-size:17px;margin:0 0 8px;color:var(--ink)}
+.zc-dialog p{font-size:13px;line-height:1.6;color:var(--muted);margin:0}
+.zc-dialog__actions{display:flex;justify-content:flex-end;gap:9px;margin-top:23px}
+.zc-dialog__actions button{border-radius:8px;padding:9px 15px;font-weight:700;font-size:12px;cursor:pointer}
+.zc-dialog__cancel{border:1px solid var(--line);background:#fff;color:var(--muted)}
+.zc-dialog__accept{border:1px solid var(--blue);background:var(--blue);color:#fff}
+@keyframes zc-fade{from{opacity:0}to{opacity:1}}
+@keyframes zc-dialog-in{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:600px){.zc-toast-region{top:12px;right:12px;width:calc(100vw - 24px)}.zc-dialog{padding:21px}}
+@media(prefers-reduced-motion:reduce){.zc-toast,.zc-dialog-backdrop,.zc-dialog{animation:none}.zc-toast__progress{animation:none}}

@@ -1,38 +1,297 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="CSS/estilo.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <title>ZimbraConnect | Comunicación y productividad</title>
+
+    <link rel="stylesheet" href="assets/css/estilos.css">
+    <link rel="stylesheet" href="assets/css/landing.css">
+    <link rel="stylesheet" href="assets/css/componentes.css">
 </head>
+
 <body>
- <div class="banner">
-<h1>Zimbra</h1>
-    <p>Inicio</p>
-    <p>Producto</p>
-    <p>Planes</p>
-    <p>Soporte</p>
-    <Button type="submit"><a href="login.html">Inicio Sesión</a></Button>
-    <Button><a href="formulario_registro.html">Registrate</a></Button>
- </div>
-<div class="cuadro_informacion">
-    <div class="informacion">
-        <h1>Conecta, colabora</h1>
-        <h1>y crece con Zimbra</h1>
-        <p>Comuniacion y productividad en una sola plataforma</p>
-        <input type="button" value="Comenzar ahora">
-        <input type="button" value="Descarga versión gratuita">
-    </div>
-</div>
-<div class="banner_secundario">
-    <ul>
-        <li>Chat en tiempo real</li>
-        <li>Correo y Calendario</li>
-        <li>Descarga de Software</li>
-        <li>Soporte experto</li>
-    </ul>
-</div>
+
+    <!-- ENCABEZADO -->
+    <header class="site-header">
+
+        <div class="container navbar">
+
+            <a class="brand" href="index.html">
+                <span class="brand-mark">➤</span>
+                ZimbraConnect
+            </a>
+
+            <nav class="nav-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#productos">Productos</a>
+                <a href="#planes">Planes</a>
+                <a href="#soporte">Soporte</a>
+            </nav>
+
+            <div class="nav-actions">
+
+                <!-- INICIO DE SESIÓN -->
+                <a class="btn btn-outline btn-sm" href="login.html">
+                    Iniciar sesión
+                </a>
+
+                <!-- REGISTRO -->
+                <a class="btn btn-primary btn-sm" href="registro.html">
+                    Registrarse
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+
+        <!-- INICIO / HERO -->
+        <section class="hero" id="inicio">
+
+            <div class="container hero-inner">
+
+                <div class="hero-copy">
+
+                    <div class="eyebrow">
+                        Comunicación para equipos que avanzan
+                    </div>
+
+                    <h1>
+                        Conecta, colabora<br>
+                        y crece con Zimbra
+                    </h1>
+
+                    <p>
+                        Comunicación y productividad en una sola plataforma.
+                        Gestiona tus conversaciones, contactos, propuestas
+                        y oportunidades comerciales desde un solo lugar.
+                    </p>
+
+                    <div style="display:flex;gap:10px;flex-wrap:wrap">
+
+                        <!-- COMENZAR REGISTRO -->
+                        <a class="btn btn-orange" href="registro.html">
+                            Comenzar ahora →
+                        </a>
+
+                        <!-- DESCARGAS -->
+                        <a class="btn btn-outline" href="pages/descargas.html">
+                            Descargar versión gratuita
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- VISUALIZACIÓN DE LA PLATAFORMA -->
+                <div class="hero-visual">
+
+                    <div class="device">
+
+                        <div class="device-top">
+                            <b>➤ ZimbraConnect</b>
+                            <span>•••</span>
+                        </div>
+
+                        <div class="device-content">
+
+                            <div class="device-box">
+                                <b>Conversaciones</b>
+                                <p>Hola, Carlos. Te comparto la propuesta.</p>
+                                <span class="pill green">En línea</span>
+                            </div>
+
+                            <div class="device-box">
+                                <b>Panel comercial</b>
+
+                                <h2 style="color:#0865dc;margin:10px 0">
+                                    820
+                                </h2>
+
+                                <small>Prospectos activos</small>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- VISTA MÓVIL -->
+                    <div class="phone">
+
+                        <b style="font-size:9px;color:#123f78">
+                            ZimbraConnect
+                        </b>
+
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div style="width:60%"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CARACTERÍSTICAS PRINCIPALES -->
+        <div class="container features">
+
+            <div class="card feature">
+                <span>▣</span>
+                <b>Chat en tiempo real</b>
+            </div>
+
+            <div class="card feature">
+                <span>▤</span>
+                <b>Correo y calendario</b>
+            </div>
+
+            <div class="card feature">
+                <span>⇩</span>
+                <b>Descarga de software</b>
+            </div>
+
+            <div class="card feature">
+                <span>♧</span>
+                <b>Soporte experto</b>
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCTOS -->
+        <section class="section" id="productos">
+
+            <div class="container">
+
+                <div class="section-title">
+
+                    <div class="eyebrow">
+                        Una plataforma integral
+                    </div>
+
+                    <h2>Todo tu trabajo conectado</h2>
+
+                    <p class="muted">
+                        Herramientas para comunicarte, organizar oportunidades
+                        y tomar mejores decisiones.
+                    </p>
+
+                </div>
+
+
+                <div class="grid grid-3">
+
+                    <article class="card product-card">
+
+                        <div class="symbol">◉</div>
+
+                        <h3>Comunicación</h3>
+
+                        <p class="muted">
+                            Conversaciones y contactos centralizados
+                            para tu equipo.
+                        </p>
+
+                    </article>
+
+
+                    <article class="card product-card">
+
+                        <div class="symbol">♧</div>
+
+                        <h3>Gestión comercial</h3>
+
+                        <p class="muted">
+                            Seguimiento de visitantes, prospectos
+                            y propuestas.
+                        </p>
+
+                    </article>
+
+
+                    <article class="card product-card">
+
+                        <div class="symbol">▥</div>
+
+                        <h3>Analítica</h3>
+
+                        <p class="muted">
+                            Indicadores y reportes para entender
+                            tus resultados.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PLANES -->
+        <section class="section" id="planes">
+
+            <div class="container section-title">
+
+                <div class="eyebrow">
+                    Empieza hoy
+                </div>
+
+                <h2>
+                    Planes flexibles para tu organización
+                </h2>
+
+                <p class="muted">
+                    Explora la versión gratuita o inicia una prueba de 60 días.
+                </p>
+
+                <a class="btn btn-primary" href="pages/descargas.html">
+                    Conocer versiones
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="site-footer" id="soporte">
+
+        <div class="container"
+             style="display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap">
+
+            <b>➤ ZimbraConnect</b>
+
+            <span>
+                Comunicación y productividad en una sola plataforma.
+            </span>
+
+            <span>
+                Soporte · Contacto · Privacidad
+            </span>
+
+        </div>
+
+    </footer>
+
+    <script src="assets/js/notificaciones.js"></script>
 </body>
-</html> 
+</html>

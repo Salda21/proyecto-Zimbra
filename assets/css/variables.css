@@ -1,0 +1,11 @@
+
+:root{
+ --navy:#0b2d59;--navy-2:#123f78;--blue:#0865dc;--blue-2:#2f83f7;
+ --sky:#eaf3ff;--pale:#f4f8ff;--white:#fff;--ink:#10284c;--muted:#667895;
+ --line:#dce7f6;--orange:#ff7417;--green:#16a36a;--red:#e34c54;
+ --shadow:0 8px 24px rgba(16,57,112,.10);--radius:13px;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(135deg,#edf5ff,#f7faff 55%,#e7f1ff);color:var(--ink);font-family:Inter,"Segoe UI",Arial,sans-serif;font-size:14px}
+a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}
+button{cursor:pointer}img{max-width:100%}
