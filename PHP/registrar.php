@@ -1,60 +1,103 @@
+
 <?php
 require_once __DIR__ . "/conexion.php";
 
-// 1. Validar que la petición sea por POST
-if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    header("Location: ../formulario_registro.html"); 
+// Función para regresar al formulario con un error
+function regresarError($error) {
+    header("Location: ../formulario_registro.html?error=" . urlencode($error));
     exit;
 }
 
+// 1. Comprobar que la petición sea POST
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    header("Location: ../formulario_registro.html");
+    exit;
+}
+
+// 2. Recibir los datos
 $nombre = trim($_POST["nombre"] ?? "");
 $email = trim($_POST["email"] ?? "");
 $contraseña = $_POST["password"] ?? "";
+$confirmar = $_POST["confirmarPassword"] ?? "";
 
-// Validaciones básicas de servidor
-if (empty($nombre) || !filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($contraseña) < 8) {
-    exit("Los datos ingresados no son válidos.");
+
+// 3. Validar nombre
+if (
+    strlen($nombre) < 3 ||
+    !preg_match("/^[\p{L}\s'-]+$/u", $nombre)
+) {
+    regresarError("nombre");
 }
 
+// 4. Validar correo
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    regresarError("email");
+}
+
+// 5. Validar contraseña
+if (strlen($contraseña) < 8) {
+    regresarError("password");
+}
+
+if ($contraseña !== $confirmar) {
+    regresarError("confirmar");
+}
 try {
-    // 2. Verificar si el correo ya está registrado
-    $stmtCheck = $conexion->prepare("SELECT id_usuario FROM usuario WHERE email = ?");
+
+    // 7. Comprobar si el correo ya existe
+    $stmtCheck = $conexion->prepare(
+        "SELECT id_usuario FROM usuario WHERE email = ?"
+    );
+
     $stmtCheck->bind_param("s", $email);
     $stmtCheck->execute();
     $stmtCheck->store_result();
 
     if ($stmtCheck->num_rows > 0) {
-        exit("Error: El correo electrónico ya se encuentra registrado.");
+        $stmtCheck->close();
+        regresarError("duplicado");
     }
+
     $stmtCheck->close();
 
-    // 3. Generar el hash seguro de la contraseña
+    // 8. Encriptar la contraseña
     $passwordHash = password_hash($contraseña, PASSWORD_DEFAULT);
 
-    // 4. Definir el rol por defecto (ej. Rol 4 para usuario)
-    $rolPorDefecto = 4; 
+    // 9. Asignar rol por defecto
+    $rolPorDefecto = 4;
 
-    // 5. Preparar la consulta SQL correctamente con '?'
+    // 10. Insertar usuario
     $sql = $conexion->prepare(
-        "INSERT INTO usuario (rol, nombre, email, contraseña, fecha_registro) 
+        "INSERT INTO usuario
+        (rol, nombre, email, contraseña, fecha_registro)
         VALUES (?, ?, ?, ?, NOW())"
     );
 
-    // 6. Vincular los parámetros de forma segura (i = entero, s = string)
-    $sql->bind_param("isss", $rolPorDefecto, $nombre, $email, $passwordHash);
+    $sql->bind_param(
+        "isss",
+        $rolPorDefecto,
+        $nombre,
+        $email,
+        $passwordHash
+    );
 
-    // 7. Ejecutar y redirigir
     if ($sql->execute()) {
-        header("Location: ../inicio.html"); 
+
+        $sql->close();
+        $conexion->close();
+
+        header("Location: ../inicio.html?registro=exitoso");
         exit;
+
     } else {
-        echo "Error al registrar: " . $sql->error;
+        $sql->close();
+        regresarError("registro");
     }
 
-    $sql->close();
-    $conexion->close();
+} catch (mysqli_sql_exception $e) {
 
-} catch (Exception $e) {
-    echo "Ocurrió un error en el sistema. Inténtalo más tarde.";
+    error_log($e->getMessage());
+    regresarError("registro");
+
 }
 ?>

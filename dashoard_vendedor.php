@@ -19,9 +19,10 @@ $nombre = htmlspecialchars($_SESSION["nombre"]);
 </head>
 <body>
     <div class="bienvenida">
-    <h1>¡Hola, <?php echo $nombre; ?>!</h1>
+    <h1>¡Hola, vendedor <?php echo $nombre; ?>!</h1>
 
     <p>Bienvenido a Zimbra.</p>
+
 </div>
 </body>
 </html>
