@@ -37,14 +37,14 @@
 
                         <div class="field">
                             <label>Nombre completo</label>
-                            <input type="text" required
+                            <input type="text" name="nombre" id="nombre" required
                                 placeholder="Nombre completo">
                             <small class="mensaje-error" id="errorNombre"></small>
                         </div>
 
                         <div class="field">
                             <label>Correo electrónico</label>
-                            <input type="email" required
+                            <input type="email" name="email" id="email" required
                                 placeholder="correo@empresa.com">
                             <small class="mensaje-error" id="errorEmail"></small>
                             </div>
@@ -53,13 +53,13 @@
                             <label>Contraseña</label>
                             <input id="password" type="password"
                                 minlength="8" required
-                                placeholder="Mínimo 8 caracteres">
+                                placeholder="Mínimo 8 caracteres" name="password" id="password">
                             <small class="mensaje-error" id="errorPassword"></small>
                             </div>
 
                         <div class="field">
                             <label>Confirmar contraseña</label>
-                            <input id="confirmPassword" type="password"
+                            <input name="confirmarPassword" id="confirmPassword" type="password" 
                                 required placeholder="Repite tu contraseña">
                             <small class="mensaje-error" id="errorConfirmar"></small>
                         </div>
