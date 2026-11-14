@@ -70,7 +70,7 @@ switch ($_SESSION["rol"]) {
         exit;
 
     case 4:
-        header("Location: /zimbra/inicio.html");
+        header("Location: /zimbra/inicio.php");
         exit;
 
     default:
