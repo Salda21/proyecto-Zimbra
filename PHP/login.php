@@ -36,13 +36,13 @@ $usuario = $resultado->fetch_assoc();
 
 // 4. Comprobar si el correo está registrado
 if (!$usuario) {
-    header("Location: /zimbra/login.html?error=correo");
+    header("Location: /proyecto-zimbra/login.html?error=correo");
     exit;
 }
 
 // 5. Comprobar la contraseña
 if (!password_verify($password, $usuario["contraseña"])) {
-    header("Location: /zimbra/login.html?error=password");
+    header("Location: /proyecto-zimbra/login.html?error=password");
     exit;
 }
 
@@ -58,7 +58,7 @@ $_SESSION["email"] = $usuario["email"];
 switch ($_SESSION["rol"]) {
 
     case 1:
-        header("Location: /zimbra/dashboard_admin.php");
+        header("Location: /proyecto-Zimbra/pages/dashboard.php");
         exit;
 
     case 2:
@@ -70,7 +70,7 @@ switch ($_SESSION["rol"]) {
         exit;
 
     case 4:
-        header("Location: /zimbra/inicio.php");
+        header("Location: /proyecto-Zimbra/pages/inicio.php");
         exit;
 
     default:
