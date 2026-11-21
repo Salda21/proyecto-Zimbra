@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -8,7 +7,7 @@ require_once __DIR__ . "/conexion.php";
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     header("Location: ../login.html");
     exit;
-}   
+}
 
 // 2. Recibir los datos
 $email = trim($_POST["email"] ?? "");
@@ -33,6 +32,7 @@ $sql->execute();
 
 $resultado = $sql->get_result();
 $usuario = $resultado->fetch_assoc();
+$sql->close();
 
 // 4. Comprobar si el correo está registrado
 if (!$usuario) {
@@ -49,8 +49,8 @@ if (!password_verify($password, $usuario["contraseña"])) {
 // 6. Inicio de sesión correcto
 session_regenerate_id(true);
 
-$_SESSION["id_usuario"] = $usuario["id_usuario"];
-$_SESSION["rol"] = (int)$usuario["rol"];
+$_SESSION["id_usuario"] = (int) $usuario["id_usuario"];
+$_SESSION["rol"] = (int) $usuario["rol"];
 $_SESSION["nombre"] = $usuario["nombre"];
 $_SESSION["email"] = $usuario["email"];
 
@@ -70,6 +70,26 @@ switch ($_SESSION["rol"]) {
         exit;
 
     case 4:
+        $stmtDescarga = $conexion->prepare("
+            SELECT tipo
+            FROM descargas
+            WHERE id_usuario = ?
+              AND tipo IN ('Gratuita', 'Premium')
+            ORDER BY id_descarga DESC
+            LIMIT 1
+        ");
+        $stmtDescarga->bind_param("i", $_SESSION["id_usuario"]);
+        $stmtDescarga->execute();
+        $resDescarga = $stmtDescarga->get_result();
+        $ultimaDescarga = $resDescarga ? $resDescarga->fetch_assoc() : null;
+        $stmtDescarga->close();
+
+        if ($ultimaDescarga) {
+            // Pantalla diferente cuando ya tiene Gratuita o Premium
+            header("Location: /proyecto-Zimbra/pages/chat.html");
+            exit;
+        }
+
         header("Location: /proyecto-Zimbra/pages/inicio.php");
         exit;
 
@@ -78,4 +98,3 @@ switch ($_SESSION["rol"]) {
         header("Location: /zimbra/login.html?error=rol");
         exit;
 }
-?>
