@@ -98,3 +98,4 @@ switch ($_SESSION["rol"]) {
         header("Location: /zimbra/login.html?error=rol");
         exit;
 }
+?>

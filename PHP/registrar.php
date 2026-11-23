@@ -10,7 +10,7 @@ function regresarError($error) {
 
 // 1. Comprobar que la petición sea POST
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    header("Location: ../formulario_registro.html");
+    header("Location: ../registro.html");
     exit;
 }
 
@@ -81,15 +81,24 @@ try {
         $passwordHash
     );
 
-    if ($sql->execute()) {
+   if ($sql->execute()) {
+        $nuevoId = $conexion->insert_id;
+
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        session_regenerate_id(true);
+        $_SESSION["id_usuario"] = (int) $nuevoId;
+        $_SESSION["rol"] = $rolPorDefecto;
+        $_SESSION["nombre"] = $nombre;
+        $_SESSION["email"] = $email;
 
         $sql->close();
         $conexion->close();
 
-        header("Location: ../inicio.html?registro=exitoso");
+        header("Location: /proyecto-Zimbra/pages/inicio.php?registro=ok");
         exit;
-
-    } else {
+    }else {
         $sql->close();
         regresarError("registro");
     }
