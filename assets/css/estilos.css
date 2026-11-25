@@ -72,3 +72,35 @@ label{display:block;font-size:12px;font-weight:700;color:#385071;margin-bottom:6
     margin-top: 4px;
     min-height: 16px;
 }
+
+.campo-password .toggle-password:hover {
+    color: var(--blue);
+}
+
+.field .campo-password {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.field .campo-password input {
+    width: 100%;
+    padding-right: 40px;
+    box-sizing: border-box;
+}
+
+.field .campo-password .toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--muted, #64748b);
+    font-size: 19px;
+    line-height: 1;
+    z-index: 2;
+}
+
+.field .campo-password .toggle-password:hover {
+    color: var(--blue, #0865dc);
+}
