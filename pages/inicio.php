@@ -182,6 +182,7 @@ if ($stmt) {
         </main>
     </div>
     <script src="../assets/js/notificaciones.js"></script>
+    <script src="../assets/js/bandeja_notificaciones.js"></script>
     <script src="../assets/js/prueba_usuario.js"></script>
     <script src="../assets/js/main.js"></script>
 </body>

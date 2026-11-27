@@ -46,15 +46,28 @@ $nombre = htmlspecialchars($_SESSION["nombre"]);
                         <div class="muted" style="font-size:11px">ZimbraConnect / Dashboard</div>
                     </div>
                 </div>
-                <div class="top-actions"><input class="search" placeholder="Buscar..." style="max-width:210px"><button
-                        class="icon-btn" title="Notificaciones">♧</button><span class="avatar">AD</span></div>
+                <div class="top-actions"><input class="search" placeholder="Buscar..." style="max-width:210px">
+                    <div class="notification-menu">
+                        <button class="icon-btn notification-trigger" id="btnNotificaciones" type="button"
+                            title="Notificaciones" aria-label="Abrir notificaciones"
+                            aria-controls="panelNotificaciones" aria-expanded="false">
+                            ♧<span class="notification-badge" id="contadorNotificaciones" hidden>0</span>
+                        </button>
+                        <section class="notification-panel" id="panelNotificaciones" aria-label="Notificaciones" hidden>
+                            <h2>Notificaciones</h2>
+                            <ul id="listaNotificaciones" class="notification-list">
+                                <li class="notification-empty" id="sinNotificaciones">No tienes notificaciones.</li>
+                            </ul>
+                        </section>
+                    </div>
+                    <span class="avatar">AD</span></div>
             </header>
             <section class="page-content">
                 <div class="section-head">
                     <div>
                         <h2>Bienvenida, <?php echo $nombre; ?> 👋</h2>
                         <p>Aquí tienes un resumen de la actividad de ZimbraConnect.</p>
-                    </div><button class="icon-btn">♧</button>
+                    </div>
                 </div>
                 <div class="grid grid-4">
                     <div class="card stat">
@@ -114,6 +127,7 @@ $nombre = htmlspecialchars($_SESSION["nombre"]);
         </main>
     </div>
     <script src="../assets/js/notificaciones.js"></script>
+    <script src="../assets/js/bandeja_notificaciones.js"></script>
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/dashboard.js"></script>
 </body>

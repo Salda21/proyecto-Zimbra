@@ -87,6 +87,7 @@ $csrfToken = htmlspecialchars($_SESSION["chat_csrf_token"], ENT_QUOTES, "UTF-8")
         </section>
     </main>
     <script src="<?= $basePathHtml ?>/assets/js/notificaciones.js"></script>
+    <script src="<?= $basePathHtml ?>/assets/js/bandeja_notificaciones.js"></script>
     <script src="<?= $basePathHtml ?>/assets/js/prueba_usuario.js"></script>
     <script src="<?= $basePathHtml ?>/assets/js/chat_clientes.js"></script>
 </body>
