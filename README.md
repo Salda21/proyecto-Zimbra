@@ -28,6 +28,8 @@ No abras los archivos mediante `file://` ni uses Live Server para probar el inic
 ## Importante
 Los formularios de inicio de sesión y registro envían sus datos a los endpoints de `PHP/`. Un error del navegador indicando que no pudo conectar con el servidor suele significar que la página no se sirve desde Apache/PHP o que la ruta del endpoint no existe; un error de MySQL se debe revisar después de confirmar que PHP está ejecutándose y que `mysqli` está habilitado.
 
+Los clientes que activan la prueba de 60 días llegan a su chat privado al iniciar sesión. Desde allí pueden buscar otros clientes por nombre, iniciar conversaciones y recibir mensajes y notificaciones. Esta función usa las tablas existentes `conversaciones`, `mensajes` y `notificaciones`; requiere PHP, MySQL y sesiones activas.
+
 Para producción se deben revisar la autenticación y los permisos por rol (Administrador, Vendedor y Marketing), y enlazar el envío de comunicaciones comerciales con el servidor Zimbra propio.
 
 Los reportes están configurados para generación manual y exportación compatible con Excel. No se implementan bandejas personales ni integraciones con Gmail, Outlook, Mailchimp o SendGrid.

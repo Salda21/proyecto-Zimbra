@@ -82,7 +82,7 @@ if ($stmt) {
 
 <body>
     <div class="bienvenida">
-        <h1>Bienvendio a Zimbra, usuario <?php echo $nombre; ?>!👋</h1>
+        <h1>Bienvenido a Zimbra, usuario <?php echo $nombre; ?>!👋</h1>
         <main class="app-main">
             <header class="topbar">
                 <div style="display:flex;align-items:center;gap:12px">

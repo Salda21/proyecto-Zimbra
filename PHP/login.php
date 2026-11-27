@@ -134,22 +134,34 @@ switch ($_SESSION["rol"]) {
         break;
 
     case 4:
-        $stmtDescarga = $conexion->prepare("
-            SELECT tipo
-            FROM descargas
-            WHERE id_usuario = ?
-              AND tipo IN ('Gratuita', 'Premium')
-            ORDER BY id_descarga DESC
-            LIMIT 1
+        $stmtAccesoCliente = $conexion->prepare("
+            SELECT
+                EXISTS (
+                    SELECT 1
+                    FROM descargas
+                    WHERE id_usuario = ?
+                      AND tipo IN ('Gratuita', 'Premium')
+                ) OR EXISTS (
+                    SELECT 1
+                    FROM notificaciones
+                    WHERE id_usuario = ?
+                      AND tipo = 'Alerta comercial'
+                      AND contenido LIKE ?
+                ) AS tiene_acceso
         ");
-        $stmtDescarga->bind_param("i", $_SESSION["id_usuario"]);
-        $stmtDescarga->execute();
-        $resDescarga = $stmtDescarga->get_result();
-        $ultimaDescarga = $resDescarga ? $resDescarga->fetch_assoc() : null;
-        $stmtDescarga->close();
+        $prefijoActivacion = "¡Prueba de 60 días activada!%";
+        $stmtAccesoCliente->bind_param(
+            "iis",
+            $_SESSION["id_usuario"],
+            $_SESSION["id_usuario"],
+            $prefijoActivacion
+        );
+        $stmtAccesoCliente->execute();
+        $accesoCliente = $stmtAccesoCliente->get_result()->fetch_assoc();
+        $stmtAccesoCliente->close();
 
-        if ($ultimaDescarga) {
-            $destino = $basePath . "/pages/chat.html";
+        if ($accesoCliente && (int) $accesoCliente["tiene_acceso"] === 1) {
+            $destino = $basePath . "/pages/chat_cliente.php";
         } else {
             $destino = $basePath . "/pages/inicio.php";
         }
