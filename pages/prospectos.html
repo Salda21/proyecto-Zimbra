@@ -48,17 +48,17 @@
                 </div>
                 <div class="card panel">
                     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:15px"><input
-                            data-search="#prospectTable" placeholder="Buscar prospecto..."
-                            style="max-width:260px"><select data-filter="#prospectTable" style="max-width:180px">
+                            data-prospect-search placeholder="Buscar prospecto..." aria-label="Buscar prospecto"
+                            style="max-width:260px"><select data-prospect-level style="max-width:180px">
                             <option value="">Todos los niveles</option>
                             <option>Alto</option>
                             <option>Medio</option>
                             <option>Bajo</option>
-                        </select><select style="max-width:180px">
-                            <option>Últimos 30 días</option>
-                            <option>Últimos 7 días</option>
-                            <option>Este año</option>
-                        </select><button class="btn btn-outline btn-sm">Exportar</button></div>
+                        </select><select data-prospect-date style="max-width:180px" aria-label="Filtrar por fecha">
+                            <option value="30">Últimos 30 días</option>
+                            <option value="7">Últimos 7 días</option>
+                            <option value="year">Este año</option>
+                        </select><button class="btn btn-outline btn-sm" type="button" data-prospect-export>Exportar</button></div>
                     <div class="table-wrap">
                         <table id="prospectTable">
                             <thead>
