@@ -3,9 +3,11 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+$basePath = rtrim(str_replace("\\", "/", dirname(dirname($_SERVER["SCRIPT_NAME"]))), "/");
+
 // Comprobar sesión antes de consultar la base de datos
 if (!isset($_SESSION["id_usuario"])) {
-    header("Location: login.html");
+    header("Location: " . $basePath . "/login.html");
     exit;
 }
 
@@ -91,7 +93,22 @@ if ($stmt) {
                     </div>
                 </div>
                 <div class="top-actions">
-                    <a href="/proyecto-Zimbra/PHP/cerrar_sesion.php"><span class="avatar">X</span></a>
+                    <div class="notification-menu">
+                        <button class="icon-btn notification-trigger" id="btnNotificaciones" type="button"
+                            title="Notificaciones" aria-label="Abrir notificaciones"
+                            aria-controls="panelNotificaciones" aria-expanded="false">
+                            ♧<span class="notification-badge" id="contadorNotificaciones" hidden>0</span>
+                        </button>
+                        <section class="notification-panel" id="panelNotificaciones" aria-label="Notificaciones" hidden>
+                            <h2>Notificaciones</h2>
+                            <ul id="listaNotificaciones" class="notification-list">
+                                <li class="notification-empty" id="sinNotificaciones">No tienes notificaciones.</li>
+                            </ul>
+                        </section>
+                    </div>
+                    <a href="<?= htmlspecialchars($basePath . "/PHP/cerrar_sesion.php", ENT_QUOTES, "UTF-8") ?>">
+                        <span class="avatar">X</span>
+                    </a>
                 </div>
             </header>
             <section class="page-content">
@@ -100,6 +117,9 @@ if ($stmt) {
                     <div>
                         <h2 style="color:white">⇩ Descarga Zimbra</h2>
                         <p>Obtén la versión gratuita o inicia tu prueba de 60 días del potente software de colaboración.</p>
+                        <button class="btn btn-orange" id="btnActivarPrueba" type="button">
+                            Activar prueba gratuita de 60 días
+                        </button>
                     </div>
                     <div style="font-size:76px;opacity:.7">☁</div>
                 </div>
@@ -109,17 +129,17 @@ if ($stmt) {
                         <h2>Versión gratuita</h2>
                         <p class="muted">Uso ilimitado</p>
                        <a class="btn btn-outline"
-   href="javascript:void(0)"
-   data-href="/proyecto-Zimbra/PHP/descarga_gratuita.php"
-   data-confirm="¿Deseas iniciar la descarga gratuita?">Descargar ahora</a>
+                           href="javascript:void(0)"
+                           data-href="<?= htmlspecialchars($basePath . "/PHP/descarga_gratuita.php", ENT_QUOTES, "UTF-8") ?>"
+                           data-confirm="¿Deseas iniciar la descarga gratuita?">Descargar ahora</a>
                     </div>
                     <div class="card panel" style="text-align:center">
-                        <h2>Prueba de 60 días</h2>
+                       <h2>Versión premium</h2>
                         <p class="muted">Todas las funciones</p>
                         <a class="btn btn-primary"
-   href="javascript:void(0)"
-   data-href="/proyecto-Zimbra/PHP/descarga_premium.php"
-   data-confirm="¿Deseas volverte premium?">Adquirir la versión premium</a>
+                           href="javascript:void(0)"
+                           data-href="<?= htmlspecialchars($basePath . "/PHP/descarga_premium.php", ENT_QUOTES, "UTF-8") ?>"
+                           data-confirm="¿Deseas volverte premium?">Adquirir la versión premium</a>
                     </div>
                 </div>
 
@@ -162,6 +182,7 @@ if ($stmt) {
         </main>
     </div>
     <script src="../assets/js/notificaciones.js"></script>
+    <script src="../assets/js/prueba_usuario.js"></script>
     <script src="../assets/js/main.js"></script>
 </body>
 

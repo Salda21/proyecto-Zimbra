@@ -1,18 +1,21 @@
 
-# ZimbraConnect – Frontend
+# ZimbraConnect
 
-Frontend demostrativo inspirado en los nueve mockups entregados.
+Sitio web de ZimbraConnect con páginas HTML/CSS/JavaScript y endpoints PHP conectados a MySQL.
 
 ## Tecnologías
 - HTML5
 - CSS3 (variables de color, grid, flexbox y diseño responsive)
 - JavaScript vanilla
 
-## Cómo ejecutarlo
-1. Descomprime `ZimbraConnect.zip`.
-2. Abre la carpeta en Visual Studio Code.
-3. Abre `index.html` con Live Server (recomendado) o sirve la carpeta desde Apache.
-4. Entra desde la página principal. El acceso al panel está en las vistas internas bajo `pages/`.
+## Cómo ejecutarlo localmente
+1. Instala PHP y MySQL (o usa una distribución como XAMPP) e inicia el servidor web y MySQL.
+2. Comprueba que PHP tenga habilitada la extensión `mysqli` (`php -m` debe mostrar `mysqli`). Si no aparece, puedes habilitarla solo para el servidor integrado con `php -d extension=mysqli -S localhost:8000`, o habilítala en el `php.ini` que indica `php --ini` y reinicia el servidor web.
+3. Configura en `PHP/conexion.php` el host, usuario, contraseña y nombre de la base de datos de tu instalación.
+4. Desde la carpeta raíz del proyecto, inicia el servidor integrado de PHP con `php -S localhost:8000` (o el comando del paso 2 si MySQLi no está habilitado globalmente), o configura el proyecto bajo la carpeta web de Apache.
+5. Abre `http://localhost:8000/login.html` o `http://localhost:8000/registro.html`.
+
+No abras los archivos mediante `file://` ni uses Live Server para probar el inicio de sesión o el registro: esos modos no ejecutan PHP. Si el servidor web usa otro puerto o una subcarpeta, ajusta la URL y las rutas de redirección PHP según corresponda.
 
 ## Estructura
 - `index.html`: landing page.
@@ -23,6 +26,8 @@ Frontend demostrativo inspirado en los nueve mockups entregados.
 - `assets/img/logos/`: espacio para los recursos gráficos definitivos.
 
 ## Importante
-Esta entrega es únicamente el frontend. Los formularios, chats, altas y acciones muestran interacciones de demostración en el navegador. Para producción se deben conectar con PHP y MySQL, implementar autenticación y permisos por rol (Administrador, Vendedor y Marketing), y enlazar el envío de comunicaciones comerciales con el servidor Zimbra propio.
+Los formularios de inicio de sesión y registro envían sus datos a los endpoints de `PHP/`. Un error del navegador indicando que no pudo conectar con el servidor suele significar que la página no se sirve desde Apache/PHP o que la ruta del endpoint no existe; un error de MySQL se debe revisar después de confirmar que PHP está ejecutándose y que `mysqli` está habilitado.
+
+Para producción se deben revisar la autenticación y los permisos por rol (Administrador, Vendedor y Marketing), y enlazar el envío de comunicaciones comerciales con el servidor Zimbra propio.
 
 Los reportes están configurados para generación manual y exportación compatible con Excel. No se implementan bandejas personales ni integraciones con Gmail, Outlook, Mailchimp o SendGrid.

@@ -3,6 +3,8 @@ session_start();
 
 require_once __DIR__ . "/conexion.php";
 
+$basePath = rtrim(str_replace("\\", "/", dirname(dirname($_SERVER["SCRIPT_NAME"]))), "/");
+
 $esFetch = (
     isset($_SERVER["HTTP_X_REQUESTED_WITH"]) &&
     strtolower($_SERVER["HTTP_X_REQUESTED_WITH"]) === "fetch"
@@ -52,7 +54,7 @@ if ($email === "" || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     responderLoginError(
         "correo",
         "Ingresa un correo electrónico válido.",
-        "/proyecto-zimbra/login.html?error=correo",
+        $basePath . "/login.html?error=correo",
         $esFetch
     );
 }
@@ -61,7 +63,7 @@ if ($password === "") {
     responderLoginError(
         "password",
         "Debes ingresar tu contraseña.",
-        "/proyecto-zimbra/login.html?error=password",
+        $basePath . "/login.html?error=password",
         $esFetch
     );
 }
@@ -92,7 +94,7 @@ if (!$usuario) {
     responderLoginError(
         "correo",
         "El correo electrónico que ingresaste no se encuentra registrado.",
-        "/proyecto-zimbra/login.html?error=correo",
+        $basePath . "/login.html?error=correo",
         $esFetch
     );
 }
@@ -102,7 +104,7 @@ if (!password_verify($password, $usuario["contraseña"])) {
     responderLoginError(
         "password",
         "La contraseña ingresada no es correcta.",
-        "/proyecto-zimbra/login.html?error=password",
+        $basePath . "/login.html?error=password",
         $esFetch
     );
 }
@@ -120,7 +122,7 @@ $destino = null;
 
 switch ($_SESSION["rol"]) {
     case 1:
-        $destino = "/proyecto-Zimbra/pages/dashboard.php";
+        $destino = $basePath . "/pages/dashboard.php";
         break;
 
     case 2:
@@ -147,9 +149,9 @@ switch ($_SESSION["rol"]) {
         $stmtDescarga->close();
 
         if ($ultimaDescarga) {
-            $destino = "/proyecto-Zimbra/pages/chat.html";
+            $destino = $basePath . "/pages/chat.html";
         } else {
-            $destino = "/proyecto-Zimbra/pages/inicio.php";
+            $destino = $basePath . "/pages/inicio.php";
         }
         break;
 
@@ -159,7 +161,7 @@ switch ($_SESSION["rol"]) {
         responderLoginError(
             "rol",
             "Tu usuario no tiene un rol válido.",
-            "/zimbra/login.html?error=rol",
+            $basePath . "/login.html?error=rol",
             $esFetch
         );
 }

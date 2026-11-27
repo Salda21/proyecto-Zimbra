@@ -1,6 +1,6 @@
-
 <?php
 session_start();
+$basePath = rtrim(str_replace("\\", "/", dirname(dirname($_SERVER["SCRIPT_NAME"]))), "/");
 require_once __DIR__ . "/conexion.php";
 
 // Respaldo por si la conexión en conexion.php se llama $conn o $mysqli
@@ -19,7 +19,7 @@ if (!isset($conexion) || !($conexion instanceof mysqli)) {
 $id_usuario = (int) ($_SESSION['id_usuario'] ?? 0);
 
 if (!$id_usuario) {
-    header("Location: /proyecto-Zimbra/pages/login.html");
+    header("Location: " . $basePath . "/login.html");
     exit;
 }
 
@@ -37,7 +37,7 @@ $tieneGratuita = $resGratuita && $resGratuita->num_rows > 0;
 $stmtGratuita->close();
 
 if (!$tieneGratuita) {
-    header("Location: /proyecto-Zimbra/pages/inicio.php?premium=requiere_gratuita");
+    header("Location: " . $basePath . "/pages/inicio.php?premium=requiere_gratuita");
     exit;
 }
 
@@ -55,7 +55,7 @@ $yaTienePremium = $resPremium && $resPremium->num_rows > 0;
 $stmtPremium->close();
 
 if ($yaTienePremium) {
-    header("Location: /proyecto-Zimbra/pages/inicio.php?premium=ya_usada");
+    header("Location: " . $basePath . "/pages/inicio.php?premium=ya_usada");
     exit;
 }
 
@@ -94,7 +94,7 @@ try {
     $conexion->commit();
 
     // Redirigir de vuelta a pages/inicio.php
-    header("Location: /proyecto-Zimbra/pages/inicio.php?premium=ok");
+    header("Location: " . $basePath . "/pages/inicio.php?premium=ok");
     exit;
 
 } catch (Exception $e) {
@@ -123,7 +123,7 @@ if (!isset($conexion) || !($conexion instanceof mysqli)) {
 $id_usuario = $_SESSION['id_usuario'] ?? null;
 
 if (!$id_usuario) {
-    header("Location: /proyecto-Zimbra/pages/login.html");
+    header("Location: " . $basePath . "/login.html");
     exit;
 }
 
@@ -162,7 +162,7 @@ try {
     $conexion->commit();
 
     // Redirigir de vuelta a pages/inicio.php
-    header("Location: /proyecto-Zimbra/pages/inicio.php?premium=ok");
+    header("Location: " . $basePath . "/pages/inicio.php?premium=ok");
     exit;
 
 } catch (Exception $e) {

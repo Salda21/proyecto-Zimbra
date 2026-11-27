@@ -1,4 +1,3 @@
-
 <?php
 /*
 require_once __DIR__ . "/conexion.php";
@@ -119,6 +118,8 @@ $esFetch = (
     strtolower($_SERVER["HTTP_X_REQUESTED_WITH"]) === "fetch"
 );
 
+$basePath = rtrim(str_replace("\\", "/", dirname(dirname($_SERVER["SCRIPT_NAME"]))), "/");
+
 function responderError($error, $esFetch) {
     $mensajes = [
         "nombre" => "El nombre debe tener al menos 3 caracteres y solo letras o espacios.",
@@ -204,7 +205,7 @@ try {
         $sql->close();
         $conexion->close();
 
-        $destino = "/proyecto-Zimbra/pages/inicio.php?registro=ok";
+        $destino = $basePath . "/pages/inicio.php?registro=ok";
 
         if ($esFetch) {
             header("Content-Type: application/json; charset=utf-8");

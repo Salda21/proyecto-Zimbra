@@ -1,5 +1,6 @@
 <?php
 session_start();
+$basePath = rtrim(str_replace("\\", "/", dirname(dirname($_SERVER["SCRIPT_NAME"]))), "/");
 require_once __DIR__ . "/conexion.php";
 
 // Respaldo por si la conexión en conexion.php se llama $conn o $mysqli
@@ -18,7 +19,7 @@ if (!isset($conexion) || !($conexion instanceof mysqli)) {
 $id_usuario = (int) ($_SESSION['id_usuario'] ?? 0);
 
 if (!$id_usuario) {
-    header("Location: /proyecto-Zimbra/pages/login.html");
+    header("Location: " . $basePath . "/login.html");
     exit;
 }
 
@@ -36,7 +37,7 @@ $yaTieneGratuita = $resGratuita && $resGratuita->num_rows > 0;
 $stmtGratuita->close();
 
 if ($yaTieneGratuita) {
-    header("Location: /proyecto-Zimbra/pages/inicio.php?descarga=ya_usada");
+    header("Location: " . $basePath . "/pages/inicio.php?descarga=ya_usada");
     exit;
 }
 
@@ -73,7 +74,7 @@ try {
     $conexion->commit();
 
     // Redirigir de vuelta a pages/inicio.php
-    header("Location: /proyecto-Zimbra/pages/inicio.php?descarga=ok");
+    header("Location: " . $basePath . "/pages/inicio.php?descarga=ok");
     exit;
 
 } catch (Exception $e) {
